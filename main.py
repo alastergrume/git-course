@@ -1,1 +1,6 @@
-print("Hello!")
+def main_page():
+    name = input("Введите ваше имя -> " )
+    print(f'Привет {name}')
+
+
+main_page()
