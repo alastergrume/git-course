@@ -1,11 +1,21 @@
 #!groovy
-pipline {
-    agent {dockerfile: true}
+// Run docker build
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent any
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
     stages {
-        stage ('Test') {
+        stage("create docker image") {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+                echo "================ start building image ================"
+                dir ('docker') {
+                        sh 'docker build . '
+                }
             }
         }
     }
