@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /usr/app
 
 #Copy the project files into the Docker container
-COPY .. .
+COPY ../.. .
 
 # Install dependencies
 RUN pip install -r requirements.txt
