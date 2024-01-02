@@ -22,7 +22,7 @@ pipeline {
             agent any
                 steps {
                     echo "================ start deploy container ================"
-                     sh label: '', script: '''rm -rf dockerimg
+                     sh label: '', script: '''rm -rf webimage:$BUILD_NUMBER
                            docker container run -itd --name webserver$BUILD_NUMBER -p 8081 webimage:$BUILD_NUMBER'''
                 }
             }
