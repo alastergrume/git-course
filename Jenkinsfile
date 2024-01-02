@@ -25,8 +25,8 @@ pipeline {
                      sh label: '', script: '''rm -rf dockerimg
                             mkdir dockerimg
                             cd dockerimg
-                            cp /var/lib/jenkins/workspace/JenkinsfileJob/webimage:$BUILD_NUMBER .
-                            touch dockerfile
+//                             cp /var/lib/jenkins/workspace/JenkinsfileJob/webimage:$BUILD_NUMBER .
+//                             touch dockerfile
                             // cat <<EOT>>dockerfile
                             // FROM python:3.11-slim
                             // ADD webimage:$BUILD_NUMBER /usr/local/timofei/webapps/
