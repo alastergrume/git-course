@@ -14,8 +14,14 @@ pipeline {
             steps {
                 echo "================ start building image ================"
                 dir ('docker') {
-                        sh 'docker build -t test-github:latest . '
-
+                        sh 'docker build -t webimage:$BUILD_NUMBER . '
+                }
+            }
+        }
+        stage('Deploy') {
+            agent any
+                steps {
+                    sh 'sudo docker container run -itd --name webserver$BUILD_NUMBER -p 8501 webimage:$BUILD_NUMBER'
                 }
             }
         }
