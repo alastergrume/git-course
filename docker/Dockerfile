@@ -11,7 +11,7 @@ WORKDIR /usr/app
 COPY ../.. .
 
 # Install dependencies
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
 
 # Expose the port the app runs on
 EXPOSE 8501
