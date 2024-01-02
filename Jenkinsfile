@@ -18,7 +18,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {)
+        stage('Deploy') {
             agent any
                 steps {
                     echo "================ start deploy container ================"
