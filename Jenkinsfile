@@ -2,45 +2,20 @@
 // Run docker build
 properties([disableConcurrentBuilds()])
 
-// pipeline {
-//     agent any
-//
-//     options {
-//         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-//         timestamps()
-//     }
-//     stages {
-//         stage("create docker image") {
-//             steps {
-//                 echo "================ start building image ================"
-//                 dir ('docker') {
-//                         sh 'docker build . '
-//                 }
-//             }
-//         }
-//     }
-// }
-
 pipeline {
+    agent any
 
-    agent {
-        docker {
-            image 'node'
-            args '-u root'
-        }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
     }
-
     stages {
-        stage('Build') {
+        stage("create docker image") {
             steps {
-                echo 'Building...'
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                sh 'npm test'
+                echo "================ start building image ================"
+                dir ('docker') {
+                        sh 'docker build . '
+                }
             }
         }
     }
