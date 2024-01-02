@@ -15,7 +15,6 @@ pipeline {
                 echo "================ start building image ================"
                 dir ('docker') {
                         sh 'docker build -t test-github:latest . '
-                        sh 'docker rmi none'
 
                 }
             }
