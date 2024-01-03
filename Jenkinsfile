@@ -21,7 +21,8 @@ pipeline {
                 steps {
                     echo "================ start deploy container ================"
                      sh label: '', script: '''rm -rf streamlit:$BUILD_NUMBER
-                           docker container run -itd --name streamlit$BUILD_NUMBER -p 8501:8501 streamlit:$BUILD_NUMBER'''
+                           docker container run -itd --name streamlit$BUILD_NUMBER -p 8501:8501 streamlit:$BUILD_NUMBER
+                           docker image prune -a --force'''
                 }
             }
     }
