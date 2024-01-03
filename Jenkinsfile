@@ -6,7 +6,7 @@ pipeline {
     agent any
 
     options {
-        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
         timestamps()
     }
     stages {
@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "================ start building image ================"
                 dir ('docker') {
-                        sh 'docker build -f docker/Dockerfile -t streamlit:$BUILD_NUMBER . '
+                        sh 'docker build -f /var/lib/jenkins/workspace/git-course-pipline/docker/Dockerfile -t streamlit:$BUILD_NUMBER . '
                 }
             }
         }
