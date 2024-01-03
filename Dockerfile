@@ -2,6 +2,7 @@
 FROM python:3.11-slim
 #RUN useradd -ms /bin/bash user
 #USER user
+
 #Set environment variables
 ENV PYTHONUNBUFFERED=1
 
@@ -12,7 +13,7 @@ WORKDIR /home/user
 COPY ../.. .
 
 # Install dependencies
-COPY requirements.txt .
+RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Expose the port the app runs on
