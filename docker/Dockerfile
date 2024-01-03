@@ -11,7 +11,7 @@ WORKDIR /app
 COPY ../.. .
 
 # Install dependencies
-RUN pip install -r /var/lib/jenkins/workspace/git-course-pipline/requirements.txt
+RUN pip install -r app/requirements.txt
 
 # Expose the port the app runs on
 EXPOSE 8501
