@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "================ start building image ================"
                 dir ('docker') {
-                        sh 'docker build -t webimage:$BUILD_NUMBER . '
+                        sh 'docker build -t streamlit:$BUILD_NUMBER . '
                 }
             }
         }
@@ -22,8 +22,8 @@ pipeline {
             agent any
                 steps {
                     echo "================ start deploy container ================"
-                     sh label: '', script: '''rm -rf webimage:$BUILD_NUMBER
-                           docker container run -itd --name webserver$BUILD_NUMBER -p 8081 webimage:$BUILD_NUMBER'''
+                     sh label: '', script: '''rm -rf streamlit:$BUILD_NUMBER
+                           docker container run -itd --name webserver$BUILD_NUMBER -p 8501:8501 streamlit:$BUILD_NUMBER'''
                 }
             }
     }
