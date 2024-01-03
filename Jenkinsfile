@@ -13,9 +13,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo "================ start building image ================"
-                dir ('docker') {
-                        sh 'docker build -t streamlit:$BUILD_NUMBER . '
-                }
+                sh 'docker build -t streamlit:$BUILD_NUMBER . '
             }
         }
         stage('Deploy docker container') {
