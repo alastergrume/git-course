@@ -1,14 +1,15 @@
 #Use the specified base image (Используем официальный образ Phyton)
 FROM python:3.11-slim
-
+RUN useradd -ms /bin/bash user
+USER user
 #Set environment variables
 ENV PYTHONUNBUFFERED=1
 
 #Set the working directory in the container (Созадем рабочую директорию внтури контейнера)
-WORKDIR /app
+WORKDIR /home/user
 
 #Copy the project files into the Docker container
-COPY ../.. .
+#COPY ../.. .
 
 # Install dependencies
 COPY requirements.txt .
