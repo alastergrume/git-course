@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "================ start building image ================"
                 dir ('docker') {
-                        sh 'docker build -f Dockerfile -t streamlit:$BUILD_NUMBER . '
+                        sh 'docker build -t streamlit:$BUILD_NUMBER . '
                 }
             }
         }
