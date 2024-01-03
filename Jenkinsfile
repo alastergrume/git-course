@@ -13,9 +13,9 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo "================ start building image ================"
-                sh 'docker container stop $(docker container ls -q) && echo “Success”'
-                sh 'docker rm $(docker ps --filter status=exited -q)'
-                sh 'docker rmi -f'
+//                 sh 'docker container stop $(docker container ls -q)'
+//                 sh 'docker rm $(docker ps --filter status=exited -q)'
+//                 sh 'docker rmi -f'
                 sh 'docker build -t streamlit:$BUILD_NUMBER . '
             }
         }
