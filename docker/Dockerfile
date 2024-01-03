@@ -11,6 +11,7 @@ WORKDIR /app
 COPY ../.. .
 
 # Install dependencies
+COPY requirements.txt .
 RUN pip install -r app/requirements.txt
 
 # Expose the port the app runs on
