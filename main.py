@@ -6,7 +6,7 @@ import streamlit as st
 
 """
 # Welcome to Streamlit VERSION 3.0!
------This message of GitHub CI/CD----- 
+-----This message FROM GitHub CI/CD----- \n
 Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
 
 If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
