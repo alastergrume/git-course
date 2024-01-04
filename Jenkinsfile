@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "================ start building image ================"
 //                 sh 'docker container stop $(docker container ls -q)'
-                sh 'docker rm $(docker ps --filter status=exited -q)'
+//                 sh 'docker rm $(docker ps --filter status=exited -q)'
                 sh 'docker image prune -a --force'
                 sh 'docker build -t streamlit:$BUILD_NUMBER . '
             }
