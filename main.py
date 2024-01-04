@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 
 """
-# Welcome to Streamlit VERSION 5.0 2023-01-04!
+# Welcome to Streamlit VERSION 6.0 2023-01-04!
 -----This message FROM GitHub CI/CD----- \n
 Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
 
