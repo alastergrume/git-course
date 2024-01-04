@@ -16,7 +16,7 @@ pipeline {
                 sh 'docker container stop $(docker container ls -q)'
                 sh 'docker rm $(docker ps --filter status=exited -q)'
                 sh 'docker image prune -a --force'
-                sh 'docker build -t ==restart=always streamlit:$BUILD_NUMBER . '
+                sh 'docker build -t streamlit:$BUILD_NUMBER . '
             }
         }
         stage('Deploy docker container') {
@@ -24,7 +24,7 @@ pipeline {
                 steps {
                     echo "================ start deploy container ================"
                      sh label: '', script: '''rm -rf streamlit:$BUILD_NUMBER
-                           docker container run -itd --name streamlit$BUILD_NUMBER -p 8501:8501 streamlit:$BUILD_NUMBER
+                           docker container run -itd --restart=always --name streamlit$BUILD_NUMBER -p 8501:8501 streamlit:$BUILD_NUMBER
                            docker image prune -a --force'''
                 }
             }
