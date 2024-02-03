@@ -4,6 +4,9 @@ properties([disableConcurrentBuilds()])
 
 pipeline {
     agent any
+    triggers{
+        cron('H */4**1-5')
+    }
 
     options {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
@@ -13,9 +16,9 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo "================ start building image ================"
-                // sh 'docker container stop $(docker container ls -q)'
-                // sh 'docker rm $(docker ps --filter status=exited -q)'
-                // sh 'docker image prune -a --force'
+                sh 'docker container stop $(docker container ls -q)'
+                sh 'docker rm $(docker ps --filter status=exited -q)'
+                sh 'docker image prune -a --force'
                 sh 'docker build -t streamlit:$BUILD_NUMBER . '
             }
         }
